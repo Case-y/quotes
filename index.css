@@ -1,0 +1,81 @@
+
+.btn {
+    width: 250px;
+    height: 50px;
+    text-align: center;
+    background: #ccc;
+    font-size: 20px;
+    font-family: Monospace;
+    font-weight: 700;
+    border-radius: 15px;
+    border: 2px outset rgba(0, 0, 0, 0.9);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.btn:hover {
+  border: 2px outset rgba(0, 0, 0, 0.9);
+  color: white;
+  background: rgba(0, 0, 0, 0.9);
+  transition: 0.2s;
+}
+
+/*
+.quote-machine {
+  background: url(http://wallpapercave.com/wp/z6gCFAz.png)
+  no-repeat center center fixed;
+}
+*/
+
+h1.introduction {
+  padding-top: 20px;
+  text-align: center;
+  font-family: monospace;
+  font-weight: 900;
+  text-shadow: 1px 3px 6px #000;
+  color: orange;
+}
+
+.container {
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote-machine {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  background:   url("http://livedoor.blogimg.jp/kojimashitteiruka/imgs/e/f/efb57630.jpg") no-repeat center center fixed;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 700px;
+  opacity: 0.7;
+}
+
+.display {
+    padding: 100px;
+    width: 650px;
+    height: 300px;
+    text-align: center;
+    background: #ccc;
+    font-size: 20px;
+    font-family: Monospace;
+    font-weight: 700;
+    border-radius: 15px;
+    border: 2px outset rgba(0, 0, 0, 0.9);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+  
+}
+
+.inside {
+  padding: -5px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
