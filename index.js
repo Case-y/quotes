@@ -1,12 +1,75 @@
-$(document).ready(function()  { 
-  $("#main-button").click(function()
-{
-    var allquotes = ["Stay Hungry. Stay Foolish, Steve Jobs", "Good Artists Copy, Great Artists Steal, Pablo Picasso", "Argue with idiots, and you become an idiot, Paul Graham", "Be yourself; everyone else is already taken, Oscar Wilde", "Simplicity is the ultimate sophistication, Leonardo Da Vinci", "Life is 10% what happens to you and 90% how you react to it, Charles R. Swindoll", "Surround yourself only with people who are going to lift you higher, David Roads", "Love takes Action, David Roads", "Wake up with determination / Go to bed with satisfaction, Anonymous", "Work Hard Play Hard, Kanye West", "If you want to achieve greatness stop asking for permission, Anonymous", "Things work out best for those who make the best of how things work out, John Wooden", "“Don't cry because it's over, smile because it happened.”, Dr. Seuss", "You've gotta dance like there's nobody watching, Love like you'll never be hurt, Sing like there's nobody listening, And live like it's heaven on earth, William W. Purkey", "You only live once, but if you do it right, once is enough, Mae West", "In three words I can sum up everything I've learned about life: it goes on, Robert Frost", "freeCodeCamp is Amazing!!!, Casey Takeda and others", "My favorite day of them all is breakfast, just because of sasusages, Casey Takeda", "Snapchat is addicting. Add me!, Casey Takeda", "Random Note: This was dedicated to my one and only... :)", "Insanity is doing the same thing, over and over again, but expecting different results, Anonymous", "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle, Einstein"]
-    
-randomQuote = allquotes[Math.floor(Math.random()*allquotes.length)];
-    
-    $(".inside").text(randomQuote);
-    
-                          });
 
+var colors = ['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857", "#01FF70", "#F012BE", "#FF851B", "#111111", "#001f3f", ];
+var currentQuote = '', currentAuthor = '';
+
+function openURL(url) {
+   window.open(url, 'Share', 'width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
+}
+
+function getQuote() {
+  $.ajax({
+    headers: { "X-Mashape-Key": "OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V",
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded"
+             },
+    url: 'https://andruxnet-random-famous-quotes.p.mashape.com/cat=',
+    success: function(response) {
+      var r = JSON.parse(response);
+      currentQuote = r.quote;
+      currentAuthor = r.author;
+      
+      $(".quote-text").animate({
+        opacity: 0
+      }, 500,
+        function() {
+          $(this).animate({
+            opacity: 1
+          }, 500);
+        $('#text').text(r.quote);
+      });
+      
+      $(".quote-author").animate({
+        opacity: 0
+      }, 500,
+         function() {
+          $(this).animate({
+            opacity: 1
+          }, 500);
+        $('#author').html(r.author);
+      });
+      
+      var color = Math.floor(Math.random() * colors.length);
+      $("html body").animate({
+        backgroundColor: colors[color],
+        color: colors[color]
+        
+      }, 1000);
+      
+      $(".button").animate({
+        backgroundColor: colors[color]
+      }, 1000);
+    }
+  });
+}
+
+$(document).ready(function() {
+  getQuote();
+  $('#new-quote').on('click', getQuote);
+  $('#tweet-quote').on('click', function() {
+    
+      openURL("https://twitter.com/inspire_us")
+    
+  });
+    $('#facebook-post').on('click', function() {
+          openURL("https://www.facebook.com/DeepLifeQuotes/")
+    });
+  
+  $('#tumblr-quote').on('click', function() {
+    openURL("http://thisiswhatimean.tumblr.com/")
+  });
+  
+  $('#reddit-quote').on('click', function() {
+    openURL("https://www.reddit.com/r/quotes/")
+  });
+                       
 });
